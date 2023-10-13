@@ -168,7 +168,7 @@ void display() {
 /* Main function: GLUT runs as a console application starting at main()  */
 int main(int argc, char** argv) {
     glutInit(&argc, argv);          // Initialize GLUT
-    glutCreateWindow("Vertex, Primitive & Color");  // Create window with the given title
+    glutCreateWindow("Lab Task 3");  // Create window with the given title
     glutInitWindowSize(600, 600);   // Set the window's initial width & height
     glutInitWindowPosition(120, 60); // Position the window's initial top-left corner
     glutDisplayFunc(display);       // Register callback handler for window re-paint event
