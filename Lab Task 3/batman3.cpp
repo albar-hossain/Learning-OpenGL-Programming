@@ -177,6 +177,7 @@ int main(int argc, char** argv)
     glutInitWindowSize(920, 720);
     glutCreateWindow("Batman"); // Create a window with the given title
 
+    //gluOrtho2D(-30, 30, -30, 30);
     gluOrtho2D(-30, 30, -30, 30);
     glutDisplayFunc(display); // Register display callback handler for window re-paint
     glutMainLoop(); // Enter the event-processing loop

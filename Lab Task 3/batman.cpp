@@ -1,70 +1,60 @@
 #include <GL/glut.h>
-#include <iostream>
 
-void display() {
-
-    glClearColor(1.0f, 1.0f, 1.0f, 0.0f); // Set background color to black and opaque
-
-    glClear(GL_COLOR_BUFFER_BIT); // Clear the color buffer (background)
-
-    glLineWidth(99999);
-
-
-    glBegin(GL_LINES); // Each set of 4 vertices form a quad
-    glColor3ub(0, 0, 0); // white 
-    glVertex2f(3, 0);
-    glVertex2f(5, 2);
-    glVertex2f(5, 2);
-    glVertex2f(5, 4); // x, y
-    glVertex2f(5, 4); // x, y
-    glVertex2f(3, 6); // x, y
-    glVertex2f(3, 6); // x, y
-    glVertex2f(-3, 6); // x, y
-    glVertex2f(-3, 6); // x, y
-    glVertex2f(-5, 4); // x, y
-    glVertex2f(-5, 4); // x, y
-    glVertex2f(-5, 2); // x, y
-    glVertex2f(-5, 2); // x, y
-    glVertex2f(-3, 0); // x, y
-    glVertex2f(-3, 0); // x, y
-    glVertex2f(3, 0);
-
-
-
-
+void drawBuilding() {
+    // Draw the building
+    glBegin(GL_QUADS);
+    glColor3f(0.5, 0.5, 0.5); // Gray color for the building
+    glVertex2f(-1.0, -1.0);
+    glVertex2f(1.0, -1.0);
+    glVertex2f(1.0, 1.0);
+    glVertex2f(-1.0, 1.0);
     glEnd();
 
-    glBegin(GL_POLYGON); // Each set of 4 vertices form a quad
-    glColor3ub(255, 255, 1);
-    glVertex2f(3, 0);
-    glVertex2f(5, 2);
-    glVertex2f(5, 4); // x, y
-    glVertex2f(3, 6); // x, y
-    glVertex2f(-3, 6); // x, y
-    glVertex2f(-5, 4); // x, y
-    glVertex2f(-5, 2); // x, y
-    glVertex2f(-3, 0); // x, y
+    // Draw the front door
+    glColor3f(0.4, 0.2, 0.0); // Brown color for the door
+    glBegin(GL_QUADS);
+    glVertex2f(-0.2, -1.0);
+    glVertex2f(0.2, -1.0);
+    glVertex2f(0.2, 0.2);
+    glVertex2f(-0.2, 0.2);
     glEnd();
 
+    // Draw the windows
+    glColor3f(0.2, 0.7, 0.8); // Blue color for the windows
 
+    // Loop to draw windows on each floor
+    for (float y = 0.3; y < 1.0; y += 0.4) {
+        glBegin(GL_QUADS);
+        glVertex2f(-0.8, y);
+        glVertex2f(-0.6, y);
+        glVertex2f(-0.6, y + 0.2);
+        glVertex2f(-0.8, y + 0.2);
+        glEnd();
 
-
-
-    glFlush(); // Render now
-
+        glBegin(GL_QUADS);
+        glVertex2f(0.6, y);
+        glVertex2f(0.8, y);
+        glVertex2f(0.8, y + 0.2);
+        glVertex2f(0.6, y + 0.2);
+        glEnd();
+    }
 }
 
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+    drawBuilding();
+    glutSwapBuffers();
+}
 
 int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+    glutInitWindowSize(800, 800);
+    glutCreateWindow("Five-Story Building");
 
-    glutInit(&argc, argv); // Initialize GLUT
-    glutInitWindowSize(700, 700);
-    glutCreateWindow("Task 3"); // Create a window with the given title
-
-    // Set the window's initial width & height
-    gluOrtho2D(-15, 15, -15, 15);
-    glutDisplayFunc(display); // Register display callback handler for window re-paint
-    glutMainLoop(); // Enter the event-processing loop
+    glutDisplayFunc(display);
+    glutMainLoop();
 
     return 0;
 }
