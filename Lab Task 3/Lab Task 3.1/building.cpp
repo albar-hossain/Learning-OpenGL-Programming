@@ -2,11 +2,8 @@
 #include <iostream>
 
 void display() {
-
     glClearColor(1.0f, 1.0f, 1.0f, 0.0f); // Set background color to black and opaque
-
     glClear(GL_COLOR_BUFFER_BIT); // Clear the color buffer (background)
-
 
     //Drawing front of building
     glBegin(GL_QUADS);
@@ -32,18 +29,22 @@ void display() {
     glVertex2i(8, 1);
     glVertex2i(8, 16);
     glVertex2i(5, 15);
-
-
-
     glEnd();
 
     //Drawing the windows
     for (int y = 3; y <= 14; y += 3)
     {
-
-
         glBegin(GL_QUADS);
         glColor3ub(145, 184, 219);
+        glVertex2i(4, y);
+        glVertex2i(-4, y);
+        glVertex2i(-4, y + 2);
+        glVertex2i(4, y + 2);
+        glEnd();
+
+        glLineWidth(3.0);
+        glBegin(GL_LINE_LOOP);
+        glColor3ub(0, 0, 0);
         glVertex2i(4, y);
         glVertex2i(-4, y);
         glVertex2i(-4, y + 2);
@@ -76,7 +77,6 @@ void display() {
     glVertex2i(0, 2);
     glEnd();
 
-
     //Building Outlines
     glLineWidth(3.0);
     glBegin(GL_LINE_LOOP);
@@ -88,11 +88,13 @@ void display() {
     glVertex2i(-2, 16);
     glVertex2i(-5, 15);
     glEnd();
+
     glBegin(GL_LINES);
     glColor3ub(0, 0, 0);
     glVertex2i(-5, 15);
     glVertex2i(5, 15);
     glEnd();
+
     glBegin(GL_LINE_LOOP);
     glColor3ub(0, 0, 0);
     glVertex2i(5, 0);
@@ -102,20 +104,15 @@ void display() {
     glEnd();
 
     glFlush(); // Render now
-
 }
 
-
 int main(int argc, char** argv) {
-
     glutInit(&argc, argv); // Initialize GLUT
     glutInitWindowSize(700, 700);
     glutCreateWindow("Task 3"); // Create a window with the given title
-
     // Set the window's initial width & height
     gluOrtho2D(-20, 20, -5, 20);
     glutDisplayFunc(display); // Register display callback handler for window re-paint
     glutMainLoop(); // Enter the event-processing loop
-
     return 0;
 }
