@@ -154,7 +154,6 @@ void display() {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3ub(51, 51, 51); // Traffic rgb(51, 51, 51)
     glVertex2f(-4.19, 6.13);
     glVertex2f(-2.85, 6.13);
     glVertex2f(-2.85, 9);
