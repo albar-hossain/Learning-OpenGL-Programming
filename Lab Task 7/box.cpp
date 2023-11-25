@@ -19,7 +19,6 @@ void BOXR() {
     glVertex2f(1, -1);
     glVertex2f(1, 1);
     glEnd();
-
 }
 
 void BOXL() {
