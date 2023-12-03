@@ -418,7 +418,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitWindowSize(320, 320);
     glutInitWindowPosition(50, 50);
-    glutCreateWindow("Translation Animation");
+    glutCreateWindow("Day & Night Loop Animation");
     gluOrtho2D(-5, 5, 0, 10);
     glutDisplayFunc(display);
     glutTimerFunc(100, update, 0);

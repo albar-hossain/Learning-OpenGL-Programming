@@ -7,11 +7,9 @@
 void dis();
 void display();
 void DayScene();
-void NightScene();
 
 GLfloat position = 0.0f;
 GLfloat speed = 0.1f;
-
 
 void circle(float radius, float xc, float yc, float r, float g, float b)
 {
@@ -348,69 +346,30 @@ void NightScene() {
 
 }
 
-void disback(int val) {
-    glutDisplayFunc(display);
-}
 
-void display5() {
-    glClear(GL_COLOR_BUFFER_BIT);
-    glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
-    NightScene();
-    // glutTimerFunc(200, disback, 0);
-
-
-    glFlush();
-}
-
-void display4(int val) {
-    glutDisplayFunc(display5);
-}
-
-void display3() {
-    glClear(GL_COLOR_BUFFER_BIT);
-    glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-    DayScene();
-
-    glutTimerFunc(1500, display4, 0);
-
-
-    glFlush();
-}
-
-void display2(int val) {
-
-    glutDisplayFunc(display3);
-
-}
 
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     DayScene();
-
-    glutTimerFunc(1500, display2, 0);
-
-
     glFlush();
 }
 
 void dis() {
-
     glutDisplayFunc(display);
-
 }
 
-// void handleMouse(int button, int state, int x, int y) {
-//     if (button == GLUT_LEFT_BUTTON)
-//     {
-//         loop = true;
-//     }
-//     if (button == GLUT_RIGHT_BUTTON)
-//     {
-//         loop = false;
-//     }
-//     glutPostRedisplay();
-// }
+void handleMouse(int button, int state, int x, int y) {
+    if (button == GLUT_LEFT_BUTTON)
+    {
+        speed += 0.1f;
+    }
+    if (button == GLUT_RIGHT_BUTTON)
+    {
+        speed -= 0.1f;
+    }
+    glutPostRedisplay();
+}
 
 
 void handleKeypress(unsigned char key, int x, int y) {
@@ -430,14 +389,14 @@ void handleKeypress(unsigned char key, int x, int y) {
 
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
-    glutInitWindowSize(800, 800);
+    glutInitWindowSize(320, 320);
     glutInitWindowPosition(50, 50);
-    glutCreateWindow("Translation Animation");
+    glutCreateWindow("Day & Night Keypress");
     gluOrtho2D(-5, 5, 0, 10);
     glutDisplayFunc(display);
-    glutTimerFunc(100, update, 0);
+    // glutTimerFunc(100, update, 0);
     glutKeyboardFunc(handleKeypress);
-    // glutMouseFunc(handleMouse);
+    glutMouseFunc(handleMouse);
     glutMainLoop();
     return 0;
 }
