@@ -85,10 +85,11 @@ void buildingWithVerticleWindows() {
 
         glBegin(GL_QUADS);
         glColor3ub(188, 158, 115); // Building light lines rgb(188, 158, 115)
+        glVertex2f(x, 11.24);
         glVertex2f(x + 0.06, 11.24);
+        glColor3ub(88, 51, 46); // Building light lines rgb(88, 51, 46)S
         glVertex2f(x + 0.06, 5.32);
         glVertex2f(x, 5.32);
-        glVertex2f(x, 11.24);
         glEnd();
     }
 }
@@ -98,13 +99,14 @@ void wayneTower() {
 
 
     //top tower
-    glBegin(GL_POLYGON);
-    glColor3ub(88, 64, 51); // Building rgb(88, 64, 51)
+    glBegin(GL_QUADS);
+    glColor3ub(115, 74, 52); // Building rgb(115, 74, 52)
     glVertex2f(-3.52, 11.38);
+    glColor3ub(80, 60, 51); // Building rgb(88, 64, 51)
     glVertex2f(-4.4, 12.6);
     glVertex2f(-4.4, 10.92);
-    glVertex2f(-5.1, 10.94);
-    glVertex2f(-3.52, 10.86);
+    //glVertex2f(-5.1, 10.94);
+    glVertex2f(-3.52, 10.6);
     glEnd();
 
     glBegin(GL_POLYGON);
@@ -126,12 +128,15 @@ void wayneTower() {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3ub(69, 44, 40); // Building rgb(69, 44, 40)
+
+    glColor3ub(56, 40, 41); // Building rgb(56, 40, 41)
+    glVertex2f(-4.1, 7.45);
     glVertex2f(-4.1, 10.94);
-    glVertex2f(-3, 10.8);
+    glColor3ub(34, 28, 32); // Building rgb(56, 40, 41)
+    glVertex2f(-3, 10.6);
     // glVertex2f(-3, 9.8);
     glVertex2f(-3, 7.45);
-    glVertex2f(-4.1, 7.45);
+
     // glVertex2f(-3, 7.37);
     // glVertex2f(-4.1, 7.37);
     glVertex2f(-6, 10.86);
