@@ -1,6 +1,10 @@
 #include <GL/glut.h>
 #include <iostream>
 #include<math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+
 
 void circle(float radius, float xc, float yc, float r, float g, float b)
 {
@@ -96,8 +100,6 @@ void buildingWithVerticleWindows() {
 
 void wayneTower() {
 
-
-
     //top tower
     glBegin(GL_QUADS);
     glColor3ub(115, 74, 52); // Building rgb(115, 74, 52)
@@ -144,6 +146,64 @@ void wayneTower() {
 
 
 }
+
+
+void batmanBuilding() {
+
+    //building body
+    glBegin(GL_POLYGON);
+    glColor3ub(18, 14, 16); // Building rgb(18, 14, 16)
+    glVertex2f(-6, 2.8196);
+    glVertex2f(-6, 0);
+    glVertex2f(-3.33, 0);
+    glColor3ub(32, 24, 25); // Building rgb(32, 24, 25)
+    glVertex2f(-1.32857, 1.61253);
+    glVertex2f(-1.32902, 4.95088);
+    glEnd();
+    //building mid ledge
+    glBegin(GL_POLYGON);
+    glColor3ub(13, 20, 26); // Building rgb(18, 14, 16)
+    glVertex2f(-3.72, 0);
+    glVertex2f(-3.53812, 0.00917);
+    glColor3ub(13, 20, 26); // Building rgb(32, 24, 25)
+    glVertex2f(-0.89972, 2.18233);
+    glVertex2f(-0.87452, 2.33164);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3ub(18, 14, 16); // Building rgb(18, 14, 16)
+    glVertex2f(-4.08156, 0.00368);
+    glVertex2f(-3.72, 0);
+    glColor3ub(32, 24, 25); // Building rgb(32, 24, 25)
+    glVertex2f(-0.87452, 2.33164);
+    glVertex2f(-1.31265, 2.39414);
+    glEnd();
+
+
+
+
+
+    //bottom ledge
+    glBegin(GL_QUADS);
+    glColor3ub(21, 16, 16); // Building rgb(21, 16, 16)
+    glVertex2f(-2.2, 0);
+    glVertex2f(-1.51, 0);
+    glColor3ub(33, 22, 23); // Building rgb(33, 22, 23)
+    glVertex2f(-0.57942, 0.87968);
+    glVertex2f(-0.6014, 1.50076);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3ub(4, 11, 19); // Building rgb(4, 11, 19)
+    glVertex2f(-3.33, 0);
+    glVertex2f(-2.2, 0);
+    glColor3ub(9, 15, 18); // Building rgb(9, 15, 18)
+    glVertex2f(-0.6014, 1.50076);
+    glVertex2f(-1.32857, 1.61253);
+    glEnd();
+
+
+}
 void display() {
 
     glClearColor(1.0f, 1.0f, 1.0f, 0.0f); // Set background color to black and opaque
@@ -151,6 +211,7 @@ void display() {
 
     buildingWithVerticleWindows();
     wayneTower();
+    batmanBuilding();
 
 
     glFlush(); // Render now
@@ -159,11 +220,34 @@ void display() {
 
 int main(int argc, char** argv) {
     glutInit(&argc, argv); // Initialize GLUT
-    glutInitWindowSize(1920, 1080);
+
+    glutInitWindowSize(750, 1040);
+    glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH) - 750) / 2,
+        (glutGet(GLUT_SCREEN_HEIGHT) - 1061) / 2);
     glutCreateWindow("Batman"); // Create a window with the given title
     // Set the window's initial width & height
     gluOrtho2D(-6, 6, 0, 17);
     glutDisplayFunc(display); // Register display callback handler for window re-paint
+
+
+    // /* Maximize window using Windows API after glutCreateWindow() has been called */
+
+    // HWND win_handle = FindWindow(0, "Batman");
+    // if (!win_handle)
+    // {
+    //     printf("!!! Failed FindWindow\n");
+    //     return -1;
+    // }
+
+    // SetWindowLong(win_handle, GWL_STYLE, (GetWindowLong(win_handle, GWL_STYLE) | WS_MAXIMIZE));
+    // ShowWindowAsync(win_handle, SW_SHOWMAXIMIZED);
+
+    // /* Activate GLUT main loop */
+
+    // glutMainLoop();
+
+    //glutFullScreen();
+
     glutMainLoop(); // Enter the event-processing loop
     return 0;
 }
