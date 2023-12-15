@@ -23,6 +23,37 @@ void circle(float radius, float xc, float yc, float r, float g, float b)
 }
 
 void buildingWithVerticleWindows() {
+    //Antenna top
+    glBegin(GL_QUADS);
+    glColor3ub(142, 99, 63); //
+
+    glVertex2f(5.52085, 12.64831);//j1
+    glVertex2f(5.51921, 12.1929);//k1
+    glVertex2f(5.54875, 12.19425);//h1
+    glVertex2f(5.54912, 12.64755);//i1
+    glEnd();
+
+    //Antenna mid
+    glBegin(GL_QUADS);
+    glColor3ub(113, 84, 63); // Building rgb(131, 91, 59)
+
+    glVertex2f(5.51921, 12.1929);//k1
+    glVertex2f(5.48451, 12.15581);//l1
+    glVertex2f(5.58, 11.74);//f1
+
+    glVertex2f(5.54875, 12.19425);//h1
+    glEnd();
+
+    //Antennabottom
+    glBegin(GL_QUADS);
+    glColor3ub(75, 49, 46); // Building rgb(131, 91, 59)
+
+    glVertex2f(5.48451, 12.15581);//l1
+    glVertex2f(5.487, 11.74127);//m1
+    glVertex2f(5.58, 11.74);//f1
+    glColor3ub(115, 82, 55);
+    glVertex2f(5.57833, 12.15752);//g1
+    glEnd();
 
     //Drawing Tall building right side main structure
     glBegin(GL_QUADS);
